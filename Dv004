@@ -67,7 +67,7 @@
     <div class="result" id="result"></div>
   </div>
 
-  <script>n
+  <script>
     function calculate() {
       const date = document.getElementById('date').value;
       const grab = parseFloat(document.getElementById('grab').value) || 0;
@@ -83,9 +83,10 @@
       const maintenance = totalIncome * 0.10;
       const totalExpense = maintenance + electricity + other;
       const netIncome = totalIncome - totalExpense + tip;
+      const distance = distanceEnd - distanceStart;
       const costPerKm = distance > 0 ? (netIncome / distance).toFixed(2) : 0;
-      const netIncomekeep netIncome + maintenance;
-    
+      const netIncomekeep = netIncome + maintenance;
+
       const resultHTML = `
         <strong>สรุปผลวันที่: ${date}</strong><br><br>
         รายได้ GRAB: ${grab.toFixed(2)} บาท<br>
@@ -96,7 +97,7 @@
         รายจ่ายอื่น ๆ: ${other.toFixed(2)} บาท<br>
         ทิป: ${tip.toFixed(2)} บาท<br>
         รายได้สุทธิ (หลังหักค่าใช้จ่าย + บวกทิป): ${netIncome.toFixed(2)} บาท<br><br>
-        รวมค่าซ่อม (รายได้สุทธิ + ค่าซ่อม):${netIncomekeep.toFixed(2)} บาท<br>
+        รวมค่าซ่อม (รายได้สุทธิ + ค่าซ่อม): ${netIncomekeep.toFixed(2)} บาท<br>
         ระยะทางที่ใช้: ${distance} กม.<br>
         บาทต่อกิโลเมตร: ${costPerKm} บาท/กม.
       `;
